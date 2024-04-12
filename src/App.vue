@@ -11,20 +11,7 @@ const menuIsOpen = ref(false)
 
 <template>
   <header>
-    <nav>
-      <ul>
-        <li>
-          <RouterLink to="/" class="text-red-500 underline"> Accueil </RouterLink>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <RouterView v-slot="{ Component }">
-    <Suspense>
-      <component :is="Component" />
-    </Suspense>
-  </RouterView>
-    <button
+        <button
     @pointerdown="menuIsOpen = !menuIsOpen"
     aria-controls="mainNav"
     aria-expanded="true"
@@ -42,4 +29,20 @@ const menuIsOpen = ref(false)
     </ul>
   </nav>
   </Transition>
+    <nav>
+      <ul>
+        <li>
+          <RouterLink to="/" class="text-red-500 underline"> Accueil </RouterLink>
+        </li>
+                <li>
+          <RouterLink to="/accordeon" class="text-red-500 underline"> Accordeons </RouterLink>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <RouterView v-slot="{ Component }">
+    <Suspense>
+      <component :is="Component" />
+    </Suspense>
+  </RouterView>
 </template>
