@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { onErrorCaptured } from 'vue'
+import { onErrorCaptured} from 'vue'
 import { RouterLink, RouterView } from 'vue-router/auto'
 
 onErrorCaptured((err, instance, info) => {
@@ -35,6 +35,7 @@ const sectionsData = [
     quis corporis et nam.`
   }
 ]
+const numero = ref(0)
 </script>
 
 <template>
@@ -57,8 +58,8 @@ const sectionsData = [
 
 <section v-for="({ label, texte }, key) of sectionsData" :key="key">
   <pre class="font-mono">key : {{ key }}</pre>
-  <pre class="font-mono">label : {{ label }}</pre>
-  <pre class="font-mono">texte : {{ texte }}</pre>
+  <button @pointerdown="numero = key+1" class="font-mono">label : {{ label }}</button>
+  <p v-show="numero === key+1" class="font-mono">texte : {{ texte }}</p>
 </section>
 
 </template>
